@@ -8,7 +8,7 @@ services:
 
   postgres:
     image: postgres:latest
-    container_name: primetrade_postgres # change container name for clarification
+    container_name: primetrade_db # change container name for clarification
     restart: always
     environment:
       POSTGRES_USER: admin
@@ -21,7 +21,7 @@ services:
 
   pgadmin:
     image: dpage/pgadmin4
-    container_name: pgadmin
+    container_name: pgadmin_
     restart: always
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@admin.com

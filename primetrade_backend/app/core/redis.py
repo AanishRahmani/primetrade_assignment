@@ -1,12 +1,10 @@
+import os
 import redis.asyncio as redis
 from dotenv import load_dotenv
-import os
 
-load_dotenv()
+load_dotenv()  # safe: ignored in Docker if no .env exists
 
-REDIS_URL = os.getenv("REDIS_URL", "redis://localhost:6379")
+REDIS_HOST = os.getenv("REDIS_HOST", "localhost")
+REDIS_PORT = int(os.getenv("REDIS_PORT", 6379))
 
-redis_client = redis.from_url(
-    REDIS_URL,
-    decode_responses=True,  # return str instead of bytes
-)
+redis_client = redis.Redis(host=REDIS_HOST, port=REDIS_PORT, decode_responses=True)
