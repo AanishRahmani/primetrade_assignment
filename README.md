@@ -46,4 +46,10 @@ This backend powers the Primetrade full-stack application.
 - `if you dont have uv use=> uvicorn app.app:app --host 0.0.0.0 --port ${PORT:-8000}`
 - `go to http://127.0.0.1:8000/docs to test the api`
 
+---
 
+# setup the `.env` file
+
+- JWT_SECRET_KEY=jwt-secret-key
+- REDIS_URL = "redis://{inspect you docker container to get the redis ip and put it here}:6379"
+- PORT=8080
