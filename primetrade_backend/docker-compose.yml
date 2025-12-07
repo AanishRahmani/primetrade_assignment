@@ -1,0 +1,37 @@
+services:
+  redis:
+    image: redis:alpine
+    container_name: primetrade_redis
+    ports:
+      - "6379:6379"
+    restart: always
+
+  postgres:
+    image: postgres:latest
+    container_name: primetrade_postgres # change container name for clarification
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydb
+    ports:
+      - "5432:5432"
+    volumes: #used for persisting data
+      - pg_data:/var/lib/postgresql/data # edit the pg_data otherwise the data from previous container will show
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: password
+    ports:
+      - "5052:80"
+
+volumes:
+  pg_data: #ensures that data is saved even if the container is removed make sure to edit the new volume name
+
+
+
+
